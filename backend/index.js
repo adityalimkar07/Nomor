@@ -17,7 +17,7 @@ app.get('/api/health', (req, res) => {
     status: 'ok',
     message: 'Backend is running',
     geminiConfigured: !!process.env.GEMINI_API_KEY,
-    model: process.env.GEMINI_MODEL || 'gemini-1.5-flash'
+    model: 'gemini-3-flash-preview' // Hardcoded to match /api/llm logic
   });
 });
 
