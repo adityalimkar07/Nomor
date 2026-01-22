@@ -4,7 +4,7 @@ import { Capacitor } from '@capacitor/core';
 // CONFIGURATION: SET YOUR RENDER URL HERE
 // Example: "https://my-app.onrender.com"
 // ==========================================
-const PROD_BACKEND_URL = "https://nomor-git-main-john-sevens-projects.vercel.app";
+const PROD_BACKEND_URL = "https://nomor-john-sevens-projects.vercel.app";
 
 // Helper to get the correct API base URL
 const getApiBaseUrl = () => {

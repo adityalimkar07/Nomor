@@ -31,8 +31,8 @@ app.post('/api/llm', async (req, res) => {
   const { prompt, systemPrompt, max_tokens = 4000 } = req.body || {};
 
   const apiKey = process.env.GEMINI_API_KEY;
-  // Use gemini-1.5-flash or gemini-2.0-flash-lite for free tier (gemini-2.0-flash requires paid tier)
-  const model = process.env.GEMINI_MODEL || 'gemini-3-flash-preview';
+  // FORCE OVERRIDE: User request to strict usage of this model
+  const model = 'gemini-3-flash-preview';
   if (!apiKey) {
     return res.status(500).json({ error: 'GEMINI_API_KEY is not configured on the backend' });
   }
