@@ -23,7 +23,8 @@ const getApiBaseUrl = () => {
 export const callLLM = async (prompt, systemPrompt = "You are a helpful AI assistant.") => {
   try {
     const baseUrl = getApiBaseUrl();
-    console.log("Making LLM call to:", baseUrl); // Debug log
+    const platform = Capacitor.getPlatform();
+    console.log(`[LLM Service] Platform: ${platform}, Target URL: ${baseUrl}/llm`);
 
     const response = await fetch(`${baseUrl}/llm`, {
       method: "POST",
@@ -38,12 +39,12 @@ export const callLLM = async (prompt, systemPrompt = "You are a helpful AI assis
     });
 
     if (!response.ok) {
+      console.error(`[LLM Service] Error Status: ${response.status}`);
       if (response.status === 401) {
-        throw new Error("API key missing or invalid. Please check backend .env.");
+        throw new Error("API key missing or invalid. Check backend .env.");
       }
       if (response.status === 404) {
-        // If we hit 404 on Android, it might be connectivity or wrong path
-        throw new Error("Backend not reachable. Ensure server is running on port 5777.");
+        throw new Error(`Backend 404 Not Found at: ${baseUrl}/llm. Check URL configuration.`);
       }
       const errorText = await response.text();
       throw new Error(`API Error ${response.status}: ${errorText}`);
@@ -56,7 +57,7 @@ export const callLLM = async (prompt, systemPrompt = "You are a helpful AI assis
 
     return data.text;
   } catch (error) {
-    console.error("LLM Service Error:", error);
+    console.error("LLM Service Exception:", error);
     throw error;
   }
 };
