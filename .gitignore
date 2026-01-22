@@ -1,0 +1,8 @@
+node_modules/
+build/
+dist/
+.env
+.DS_Store
+mobile-app/node_modules/
+mobile-app/build/
+mobile-app/android/app/build/

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="package-lock">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/package-lock.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
