@@ -21,6 +21,11 @@ app.get('/api/health', (req, res) => {
   });
 });
 
+// Root endpoint to prevent "Cannot GET /" confusion
+app.get('/', (req, res) => {
+  res.send('Nomor Backend is Running! 🚀. Check /api/health for status.');
+});
+
 // Proxy endpoint for LLM decisions / motivation / categorization
 app.post('/api/llm', async (req, res) => {
   const { prompt, systemPrompt, max_tokens = 4000 } = req.body || {};
