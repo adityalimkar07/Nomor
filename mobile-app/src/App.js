@@ -3,7 +3,6 @@ import "./App.css";
 
 import { readLS, writeLS } from './utils/localStorageHelpers';
 import { getTimeUntilMidnight } from './utils/dateHelpers';
-import { callLLM } from './api/llmService';
 import { CAREER_TRACKS, schedule, COINS_TO_MINUTES } from './config/appConstants';
 
 import { useMotivation } from './hooks/useMotivation';

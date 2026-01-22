@@ -280,7 +280,7 @@ Generate all 15 questions now.`;
         setMcqCompleted(0);
       }
     }
-  }, [lastDsaDate, lastMcqDate, selectedTrack]);
+  }, [lastDsaDate, lastMcqDate, selectedTrack, mcqCompleted, mcqQuestions.length]);
 
   return {
     dsaStreak,

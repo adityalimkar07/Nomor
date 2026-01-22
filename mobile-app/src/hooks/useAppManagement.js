@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { readLS, writeLS } from '../utils/localStorageHelpers';
-import { getApiKey, callLLM } from '../api/llmService';
+import { callLLM } from '../api/llmService';
 import { COINS_TO_MINUTES } from '../config/appConstants';
 
 export const useAppManagement = (addHistory, spendCoins, now) => {
