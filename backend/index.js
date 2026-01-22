@@ -126,7 +126,13 @@ app.post('/api/llm', async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Backend listening on port ${port}`);
-});
+// Only start the server if we are running standalone (not on Vercel)
+if (require.main === module) {
+  app.listen(port, () => {
+    console.log(`Backend listening on port ${port}`);
+  });
+}
+
+// Export the app for Vercel
+module.exports = app;
 
