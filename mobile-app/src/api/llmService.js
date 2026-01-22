@@ -1,10 +1,19 @@
 import { Capacitor } from '@capacitor/core';
 
+// ==========================================
+// CONFIGURATION: SET YOUR RENDER URL HERE
+// Example: "https://my-app.onrender.com"
+// ==========================================
+const PROD_BACKEND_URL = "";
+
 // Helper to get the correct API base URL
 const getApiBaseUrl = () => {
   if (Capacitor.getPlatform() === 'android') {
-    // Android Emulator host loopback address
-    // Make sure your backend (node) is running on port 5777 on your PC!
+    // If user has set a production URL, use it
+    if (PROD_BACKEND_URL && PROD_BACKEND_URL.startsWith("https")) {
+      return `${PROD_BACKEND_URL}/api`;
+    }
+    // Otherwise fallback to Emulator Loopback (for local testing)
     return 'http://10.0.2.2:5777/api';
   }
   // Web / Electron (if local)
@@ -24,7 +33,7 @@ export const callLLM = async (prompt, systemPrompt = "You are a helpful AI assis
       body: JSON.stringify({
         prompt,
         systemPrompt,
-        max_tokens: 12000, // Increased max_tokens to prevent JSON truncation
+        max_tokens: 12000,
       }),
     });
 
