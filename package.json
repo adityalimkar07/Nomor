@@ -8,7 +8,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "backend": "node backend/index.js",
+    "backend": "cross-env API_PORT=5777 node backend/index.js",
     "dev": "concurrently \"npm run backend\" \"cross-env PORT=3333 npm start\"",
     "electron": "electron .",
     "dist": "npm run build && electron-builder"
@@ -51,6 +51,7 @@
       "icon": "public/icon.ico"
     }
   },
+  "proxy": "http://localhost:5777",
   "eslintConfig": {
     "extends": [
       "react-app",
